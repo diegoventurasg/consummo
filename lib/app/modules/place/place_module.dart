@@ -24,7 +24,7 @@ class PlaceModule extends Module {
   List<Bind> get binds => [
         //Bind((i) => PlaceRepositoryDao(database: i.get())),
         //stores
-        Bind.lazySingleton((i) => PlaceListStore(i.get()), export: true),
+        Bind.lazySingleton((i) => PlaceListStore(i.get())),
         Bind.factory((i) => PlaceStore(i.get(), i.get(), i.get())),
         //controllers
         Bind.factory((i) => PlaceListController(i.get())),
@@ -36,12 +36,12 @@ class PlaceModule extends Module {
         Bind.factory((i) => SqfliteUpdatePlaceDatasource(i.get())),
         Bind.factory((i) => SqfliteDeletePlaceDatasource(i.get())),
         //repositories
-        Bind.factory((i) => GetPlaceListRepositoryImpl(i.get()), export: true),
+        Bind.factory((i) => GetPlaceListRepositoryImpl(i.get())),
         Bind.factory((i) => AddPlaceRepositoryImpl(i.get())),
         Bind.factory((i) => UpdatePlaceRepositoryImpl(i.get())),
         Bind.factory((i) => DeletePlaceRepositoryImpl(i.get())),
         //usecases
-        Bind.factory((i) => GetPlaceListUseCaseImpl(i.get()), export: true),
+        Bind.factory((i) => GetPlaceListUseCaseImpl(i.get())),
         Bind.factory((i) => AddPlaceUseCaseImpl(i.get())),
         Bind.factory((i) => UpdatePlaceUseCaseImpl(i.get())),
         Bind.factory((i) => DeletePlaceUseCaseImpl(i.get())),
