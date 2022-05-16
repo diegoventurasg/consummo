@@ -3,6 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../../../core/domain/entities/logged_in_user_entity.dart';
+import '../../../../core/presentation/controllers/app_controller.dart';
 import '../../../../core/presentation/states/app_state.dart';
 import '../../../../core/presentation/components/button/button.dart';
 import '../../../../core/presentation/components/custom_text_field/custom_text_field.dart';
@@ -15,7 +17,9 @@ class AddUserPage extends StatefulWidget {
   _AddUserPageState createState() => _AddUserPageState();
 }
 
-class _AddUserPageState extends ModularState<AddUserPage, AddUserController> {
+class _AddUserPageState extends State<AddUserPage> {
+  final controller = Modular.get<AddUserController>();
+  final appController = Modular.get<AppController>();
   late final ReactionDisposer disposer;
 
   @override
@@ -25,8 +29,11 @@ class _AddUserPageState extends ModularState<AddUserPage, AddUserController> {
         (_) => controller.store.state,
         (AppState state) => state.when(
               orElse: () {},
-              success: (data) {
+              success: (data) async {
                 //cadastrado
+                LoggedInUserEntity newUser =
+                    LoggedInUserEntity(id: data, name: controller.userName!);
+                await appController.setLoggedInUser(newUser);
                 Modular.to.pushReplacementNamed('/home/');
               },
             ));
