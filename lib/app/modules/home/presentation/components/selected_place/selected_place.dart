@@ -4,8 +4,21 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../core/presentation/controllers/app_controller.dart';
 
-class SelectedPlace extends StatelessWidget {
+class SelectedPlace extends StatefulWidget {
   const SelectedPlace({Key? key}) : super(key: key);
+
+  @override
+  State<SelectedPlace> createState() => _SelectedPlaceState();
+}
+
+class _SelectedPlaceState extends State<SelectedPlace> {
+  final appController = Modular.get<AppController>();
+
+  @override
+  void initState() {
+    super.initState();
+    appController.getSelectedPlace();
+  }
 
   @override
   Widget build(BuildContext context) {
