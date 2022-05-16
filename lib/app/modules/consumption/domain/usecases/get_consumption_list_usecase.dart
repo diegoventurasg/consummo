@@ -8,10 +8,10 @@ abstract class IGetConsumptionListUseCase {
   Future<Either<Failure, List<ConsumptionEntity>>> call(int userId);
 }
 
-class GetConsumptionUseCaseImpl implements IGetConsumptionListUseCase {
+class GetConsumptionListUseCaseImpl implements IGetConsumptionListUseCase {
   final IGetConsumptionListRepository repository;
 
-  GetConsumptionUseCaseImpl(this.repository);
+  GetConsumptionListUseCaseImpl(this.repository);
 
   @override
   Future<Either<Failure, List<ConsumptionEntity>>> call(int userId) async {
