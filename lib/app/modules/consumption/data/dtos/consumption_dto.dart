@@ -7,6 +7,7 @@ extension ConsumptionDto on ConsumptionEntity {
       'name': name,
       'unit': unit,
       'color': color,
+      'user_id': userId,
     };
   }
 
@@ -16,6 +17,7 @@ extension ConsumptionDto on ConsumptionEntity {
       name: map['name'],
       unit: map['unit'],
       color: map['color'],
+      userId: map['user_id'],
     );
   }
 }
