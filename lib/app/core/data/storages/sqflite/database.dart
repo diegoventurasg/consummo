@@ -57,7 +57,10 @@ class DatabaseHelper {
           '''(
             id integer primary key autoincrement,
             name text,
-            unit text
+            unit text,
+            color int,
+            user_id integer,
+            FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE
             );''',
       '''create table if not exists ''' +
           DatabaseHelperEnum.getValue(DATABASE.tablePeriod) +

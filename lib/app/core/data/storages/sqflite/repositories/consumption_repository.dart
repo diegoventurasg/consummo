@@ -5,7 +5,7 @@ import '../database.dart';
 
 abstract class IConsumptionRepositoryDao {
   Future<Map<String, dynamic>?> get(int id);
-  Future<List<Map<String, dynamic>>?> getAll();
+  Future<List<Map<String, dynamic>>?> getByUserId(int id);
   Future<int?> insert(Map<String, dynamic> row);
   Future<bool> update(Map<String, dynamic> row);
 }
@@ -36,12 +36,14 @@ class ConsumptionRepositoryDao implements IConsumptionRepositoryDao {
   }
 
   @override
-  Future<List<Map<String, dynamic>>?> getAll() async {
+  Future<List<Map<String, dynamic>>?> getByUserId(userId) async {
     final Database db = (await database)!;
     try {
       final consumptions = await db.query(
         _table,
-        columns: ["id", "name", "unit"],
+        columns: ["id", "name", "unit", "color"],
+        where: "user_id=?",
+        whereArgs: [userId],
         orderBy: "name",
       );
 
