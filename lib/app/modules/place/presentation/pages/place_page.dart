@@ -12,7 +12,7 @@ import '../../../../core/presentation/components/button/button.dart';
 import '../../data/dtos/place_dto.dart';
 import '../../domain/entities/place_entity.dart';
 import '../controllers/place_controller.dart';
-import '../delete_dialog/delete_dialog.dart';
+import '../components/delete_dialog/delete_dialog.dart';
 
 class PlaceNavigationResult {
   final bool deleted;
