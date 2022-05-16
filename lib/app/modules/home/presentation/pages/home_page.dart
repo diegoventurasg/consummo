@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../core/presentation/controllers/app_controller.dart';
+import '../components/consumption_selector/consumption_selector.dart';
 import '../components/custom_app_bar/custom_app_bar.dart';
 import '../components/selected_place/selected_place.dart';
 
@@ -13,14 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final appController = Modular.get<AppController>();
-
-  @override
-  void initState() {
-    super.initState();
-    appController.getSelectedPlace();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,10 +20,17 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             CustomAppBar(),
             SizedBox(height: 16),
             SelectedPlace(),
+            SizedBox(height: 16),
+            TextButton(
+                onPressed: () {
+                  Modular.to.pushNamed('/consumption/');
+                },
+                child: Text('click')),
+            ConsumptionSelector(),
           ],
         ),
       ),
