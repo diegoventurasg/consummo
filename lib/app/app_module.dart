@@ -5,6 +5,7 @@ import 'core/data/storages/sqflite/repositories/place_repository.dart';
 import 'core/data/storages/sqflite/repositories/user_repository.dart' as db;
 import 'core/data/storages/shared_preferences/repositories/user_repository.dart'
     as prefs;
+import 'modules/consumption/consumption_module.dart';
 import 'modules/home/home_module.dart';
 import 'modules/login/login_module.dart';
 import 'modules/place/place_module.dart';
@@ -61,5 +62,7 @@ class AppModule extends Module {
     ModuleRoute('/login', module: LoginModule()),
     ModuleRoute('/home', module: HomeModule(), guards: [AuthGuard()]),
     ModuleRoute('/place', module: PlaceModule(), guards: [AuthGuard()]),
+    ModuleRoute('/consumption',
+        module: ConsumptionModule(), guards: [AuthGuard()]),
   ];
 }
