@@ -8,6 +8,7 @@ abstract class IConsumptionRepositoryDao {
   Future<List<Map<String, dynamic>>?> getByUserId(int id);
   Future<int?> insert(Map<String, dynamic> row);
   Future<bool> update(Map<String, dynamic> row);
+  Future<bool> delete(int id);
 }
 
 class ConsumptionRepositoryDao implements IConsumptionRepositoryDao {
@@ -78,6 +79,22 @@ class ConsumptionRepositoryDao implements IConsumptionRepositoryDao {
         row,
         where: 'id = ?',
         whereArgs: [row['id'] as int],
+      );
+      return count > 0;
+    } catch (error) {
+      if (kDebugMode) print(error);
+    }
+    return false;
+  }
+
+  @override
+  Future<bool> delete(id) async {
+    final Database db = (await database)!;
+    try {
+      int count = await db.delete(
+        _table,
+        where: 'id = ?',
+        whereArgs: [id],
       );
       return count > 0;
     } catch (error) {
