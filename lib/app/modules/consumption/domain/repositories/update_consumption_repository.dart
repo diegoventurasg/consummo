@@ -4,6 +4,6 @@ import '../../../../core/domain/errors/errors.dart';
 import '../entities/consumption_entity.dart';
 
 abstract class IUpdateConsumptionRepository {
-  Future<Either<Failure, bool>> upadteConsumption(
+  Future<Either<Failure, bool>> updateConsumption(
       ConsumptionEntity consumption);
 }

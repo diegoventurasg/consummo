@@ -15,6 +15,6 @@ class UpdateConsumptionUseCaseImpl implements IUpdateConsumptionUseCase {
 
   @override
   Future<Either<Failure, bool>> call(ConsumptionEntity consumption) async {
-    return repository.upadteConsumption(consumption);
+    return repository.updateConsumption(consumption);
   }
 }
