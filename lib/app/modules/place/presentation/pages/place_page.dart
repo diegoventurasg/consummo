@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../core/data/dtos/selected_place_dto.dart';
+import '../../../../core/presentation/components/confirmation_dialog/confirmation_dialog.dart';
 import '../../../../core/presentation/components/custom_text_field/custom_text_field.dart';
 import '../../../../core/presentation/controllers/app_controller.dart';
 import '../../../../core/presentation/states/app_state.dart';
@@ -12,7 +13,6 @@ import '../../../../core/presentation/components/button/button.dart';
 import '../../data/dtos/place_dto.dart';
 import '../../domain/entities/place_entity.dart';
 import '../controllers/place_controller.dart';
-import '../components/delete_dialog/delete_dialog.dart';
 
 class PlaceNavigationResult {
   final bool deleted;
@@ -108,8 +108,15 @@ class _PlacePageState extends State<PlacePage> {
                           onPressed: () async {
                             final deleted = await showDialog<bool>(
                               context: context,
-                              builder: (BuildContext context) =>
-                                  const DeleteDialog(),
+                              builder: (BuildContext context) {
+                                return const ConfirmationDialog(
+                                  title: 'Excluir',
+                                  message:
+                                      'Deseja excluir este local tivamente?',
+                                  yesButton: 'Confirmar',
+                                  noButton: 'Cancelar',
+                                );
+                              },
                             );
 
                             if (deleted ?? false) {
