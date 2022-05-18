@@ -42,7 +42,7 @@ class ConsumptionRepositoryDao implements IConsumptionRepositoryDao {
     try {
       final consumptions = await db.query(
         _table,
-        columns: ["id", "name", "unit", "color"],
+        columns: ["id", "name", "unit", "color", "user_id"],
         where: "user_id=?",
         whereArgs: [userId],
         orderBy: "name",
