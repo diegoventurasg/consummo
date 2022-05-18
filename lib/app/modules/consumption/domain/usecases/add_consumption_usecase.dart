@@ -8,10 +8,10 @@ abstract class IAddConsumptionUseCase {
   Future<Either<Failure, int>> call(ConsumptionEntity consumption);
 }
 
-class AddConsumptionUseCaseIml implements IAddConsumptionUseCase {
+class AddConsumptionUseCaseImpl implements IAddConsumptionUseCase {
   final IAddConsumptionRepository repository;
 
-  AddConsumptionUseCaseIml(this.repository);
+  AddConsumptionUseCaseImpl(this.repository);
 
   @override
   Future<Either<Failure, int>> call(ConsumptionEntity consumption) async {
