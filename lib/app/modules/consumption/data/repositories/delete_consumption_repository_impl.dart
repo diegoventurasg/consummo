@@ -4,10 +4,10 @@ import '../../../../core/domain/errors/errors.dart';
 import '../../domain/repositories/delete_consumption_repository.dart';
 import '../datasources/delete_consumption_datasource.dart';
 
-class DeleleConsumptionRepositoryImpl implements IDeleteConsumptionRepository {
+class DeleteConsumptionRepositoryImpl implements IDeleteConsumptionRepository {
   final IDeleteConsumptionDatasource datasource;
 
-  DeleleConsumptionRepositoryImpl(this.datasource);
+  DeleteConsumptionRepositoryImpl(this.datasource);
 
   @override
   Future<Either<Failure, bool>> deleteConsumption(int id) async {
