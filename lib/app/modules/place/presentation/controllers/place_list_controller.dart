@@ -27,7 +27,7 @@ abstract class _PlaceListControllerBase with Store {
     await store.get(userId);
     placeList.clear();
     placeList.addAll(store.state.when(
-      orElse: () => List.empty(),
+      orElse: () => List<PlaceEntity>.empty(),
       success: (list) => list,
     ));
   }
