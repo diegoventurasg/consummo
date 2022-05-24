@@ -5,6 +5,7 @@ import 'core/data/storages/sqflite/repositories/place_repository.dart';
 import 'core/data/storages/sqflite/repositories/user_repository.dart' as db;
 import 'core/data/storages/shared_preferences/repositories/user_repository.dart'
     as prefs;
+import 'core/presentation/stores/selected_consumption_store.dart';
 import 'modules/consumption/consumption_module.dart';
 import 'modules/home/home_module.dart';
 import 'modules/login/login_module.dart';
@@ -37,8 +38,9 @@ class AppModule extends Module {
     //stores
     Bind.lazySingleton((i) => LoggedInUserStore(i.get(), i.get())),
     Bind.lazySingleton((i) => SelectedPlaceStore(i.get(), i.get())),
+    Bind.lazySingleton((i) => SelectedConsumptionStore()),
     //controllers
-    Bind.lazySingleton((i) => AppController(i.get(), i.get())),
+    Bind.lazySingleton((i) => AppController(i.get(), i.get(), i.get())),
     //datasources
     Bind.factory((i) => SharedPreferencesGetLoggedInUserDatasource(i.get())),
     Bind.factory((i) => SharedPreferencesSetLoggedInUserDatasource(i.get())),
