@@ -37,6 +37,21 @@ mixin _$AppController on _AppControllerBase, Store {
           Computed<SelectedPlaceEntity?>(() => super.selectedPlace,
               name: '_AppControllerBase.selectedPlace'))
       .value;
+  Computed<bool>? _$hadConsumptionSelectedComputed;
+
+  @override
+  bool get hadConsumptionSelected => (_$hadConsumptionSelectedComputed ??=
+          Computed<bool>(() => super.hadConsumptionSelected,
+              name: '_AppControllerBase.hadConsumptionSelected'))
+      .value;
+  Computed<SelectedConsumptionEntity?>? _$selectedConsumptionComputed;
+
+  @override
+  SelectedConsumptionEntity? get selectedConsumption =>
+      (_$selectedConsumptionComputed ??= Computed<SelectedConsumptionEntity?>(
+              () => super.selectedConsumption,
+              name: '_AppControllerBase.selectedConsumption'))
+          .value;
 
   @override
   String toString() {
@@ -44,7 +59,9 @@ mixin _$AppController on _AppControllerBase, Store {
 isUserLogged: ${isUserLogged},
 loggedInUser: ${loggedInUser},
 hadPlaceSelected: ${hadPlaceSelected},
-selectedPlace: ${selectedPlace}
+selectedPlace: ${selectedPlace},
+hadConsumptionSelected: ${hadConsumptionSelected},
+selectedConsumption: ${selectedConsumption}
     ''';
   }
 }
